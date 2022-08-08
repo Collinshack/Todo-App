@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo - App for daily schedules</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+
+ <h1>Todo App </h1>  
+ <br />
+ <div class="container">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="python_form"><h1>{{form.task}}</h1></div>
+    
+  <button type="submit" class="todo_btn">Add Task</button>
+ </form> 
+<br />
+<br />
+ {% for todo in tasks %}
+ <h2>{{todo.task}}</h2>
+ <br />
+ <a href="{% url 'editTask' todo.id %}"><button class="edit_button" title="Click to edit task"><b> Edit</b></button></a>
+ <a href="{% url 'deleteTask' todo.id %}"><button class="delete_button" title="Click to delete task"><b>Delete</b></button></a>
+ 
+
+  {% endfor %}
+ </div>
+
+</body>
+</html>
