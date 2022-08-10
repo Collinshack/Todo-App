@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'signup.css' %}">
+    <title>Todo App - Log In</title>
+</head>
+<body>
+  
+<div class="container">
+   
+    <form method="POST" action="signup">
+        {% csrf_token %}
+        <h1>Todo Application </h1>
+        <h2>Sign Up Form </h2>
+
+        {% for message in messages %}
+        <h2>{{message}}</h2>
+        {% endfor %} 
+        <label>Username</label> <br />
+        <input type="text"  name="username" class="input-box" required> <br />
+
+        <label>First Name</label> <br />
+        <input type="text"  name="first_name" class="input-box" required> <br />
+
+        <label>Last Name</label> <br />
+        <input type="text"  name="last_name" class="input-box" required> <br />
+
+        <label>Email</label> <br />
+        <input type="email"  name="email" class="input-box" required> <br />
+        
+        <label>Password</label> <br />
+        <input type="password"  name="password" class="input-box" required> <br />
+
+
+        <label>Confirm password</label> <br />
+        <input type="password"  name="password2" class="input-box" required> <br />
+        <input type="checkbox" required><label> By Submitting this Form, You Agreed to our <a href="#">Terms and Conditions</a> & Privacy Policies</label> <br />
+        <button type="submit">Create Account</button> <br />
+        {{success_msg}}
+    <p>Already Have an Account? <a href="/">Log in here </a></p>   
+    </form>  <br />
+    
+</div>
+    
+</body>
+</html>

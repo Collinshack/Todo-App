@@ -9,12 +9,20 @@
     <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 <body>
-
+{% if user.is_authenticated %}
+ <h1>Welcome, {{user.username}}! </h1>  
+ <ul>
+  <li><a href="logout">Log Out</a></li>
+ </ul>
+ {% else %}
  <h1>Todo App </h1>  
  <br />
+ {% endif %}
+ 
  <div class="container">
   <form action="" method="POST">
     {% csrf_token %}
+    <h1>Todo Application </h1>  
     <div class="python_form"><h1>{{form.task}}</h1></div>
     
   <button type="submit" class="todo_btn">Add Task</button>
